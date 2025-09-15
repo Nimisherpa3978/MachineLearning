@@ -1,0 +1,69 @@
+What you’ll need
+
+A webcam (or any camera) to capture video input
+
+A programming language/environment (Python is common)
+
+Libraries / tools such as:
+
+MediaPipe (for hand landmark detection)
+
+OpenCV (for video processing, drawing UI overlays, etc.)
+
+A module to simulate key presses (e.g. pyautogui, keyboard, or similar)
+
+Good lighting and a plain background help accuracy
+
+How to build it — Steps
+
+Set up Video Input
+
+Use OpenCV (e.g. cv2.VideoCapture(0)) to capture frames from webcam in real time.
+
+Hand Landmark Detection
+
+Use MediaPipe Hands or a similar model to detect hands and compute the positions (landmarks) of key points: fingertips, joints, etc.
+
+MediaPipe gives you usually 21 landmarks per detected hand. 
+Google AI for Developers
++1
+
+Design Virtual Keyboard Layout
+
+Overlay a keyboard UI on the video frames.
+
+Define the “keys” (their rectangles or areas) — e.g. “A”, “B”, “C”, etc., spacing, layout.
+
+Draw them using OpenCV (rectangles + labels).
+
+Gesture Detection / Key Selection Logic
+
+Decide how you will select a key. Some common ways:
+
+Point finger (index finger tip) to key area + pinch with thumb to “press” it.
+
+Hover over key area for short time, or detect when index-finger touches or gets near the key area.
+
+Use the distance between two landmarks (for example between thumb tip and index finger) to detect "press" gesture.
+
+Simulating Key Press / Typing
+
+When you detect that the user has “pressed” a virtual key (via gesture + position), send a keystroke event to the system or application.
+
+Use something like Python’s pyautogui or keyboard module for that.
+
+Feedback / UI Improvements
+
+Highlight which key is currently hovered over, so user knows what will be pressed.
+
+Give visual or audio feedback when a key press occurs.
+
+Make sure the virtual keyboard UI (size, position) adjusts to different screens/resolutions so it remains usable.
+
+Testing & Tuning
+
+Test under different lighting conditions, backgrounds, hand positions.
+
+Tune thresholds (how close fingers have to be for a press, how long hover time is, etc.).
+
+Try to reduce latency so typing feels responsive.
